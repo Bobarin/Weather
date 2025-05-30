@@ -23,15 +23,9 @@ while True:
 #location = requests.get("https://nominatim.openstreetmap.org/search?format=json&q={'Berlin'}", headers=headers)
 
 #print(data_coord)
-def longito(data_coord):
-    longit = float(data_coord[0]["lon"])
-    print(longit)
-    return longit
-
-def latito(data_coord):
-    lat = float(data_coord[0]["lat"])
-    print(lat)
-    return lat
+longit = float(data_coord[0]["lon"])
+lat = float(data_coord[0]["lat"])
+print(longit,lat)
 
 #print(data_weath,temp)                      
 
@@ -42,8 +36,7 @@ def weather_fun(longit,lat):
     temp = data_weath["temperature_2m"]
     return temp
 
-Summary_weather = weather_fun(longito(data_coord),latito(data_coord))
-print(Summary_weather)
+print(weather_fun(longit,lat))
 
 #weather = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={lat}2&longitude={longit}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m")
 #data_weath = weather.json()["current"]
