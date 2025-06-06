@@ -4,6 +4,7 @@ import sqlite3
 import datetime
 import logging
 
+logging.basicConfig(filename='weather.log', level=logging.INFO)
 headers = {"User-Agent": "weather-cli-app"}
 
 #city = input('Enter your city:')
@@ -13,10 +14,13 @@ while True:
     location = requests.get(f"https://nominatim.openstreetmap.org/search?format=json&q={city}", headers=headers)
     data_coord = location.json()
     if data_coord != [] :
+        logging.info(f"Chepuh at {datetime.datetime.now().isoformat()} | City: {city}")
         break 
     else:
         print("chepuh vvedi Gorod")
-        
+        logging.error(f"Chepuh oshibsa {datetime.datetime.now().isoformat()} | City: {city}")
+
+#current_time = datetime.datetime.now().time()       
 
 
 #city = "Berlin"
